@@ -7,16 +7,17 @@ namespace E_commerce_Payment_Proccesing.Service;
 public class ProudectService
 {
 
-    public List<Root> ReadProudctJson()
+    public IReadOnlyList<Product> ReadProudctJson()
     {
         var jsonString = File.ReadAllText("products_json.json");
-        var proudect = System.Text.Json.JsonSerializer.Deserialize<Root>(jsonString);
+        var proudect = System.Text.Json.JsonSerializer.Deserialize<Root>(jsonString)?.products;
+
         if (proudect != null)
         {
-            return new List<Root> { proudect };
+            return proudect;
 
         }
-        return new List<Root>();
+        return null;
 
 
     }
