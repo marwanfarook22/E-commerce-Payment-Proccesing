@@ -1,10 +1,5 @@
 ﻿using E_commerce_Payment_Proccesing.Service;
-using E_commerce_Payment_Proccesing.Userinterface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace E_commerce_Payment_Proccesing.UserinterAction;
 
@@ -15,14 +10,11 @@ public class proudectUserInteraction
         List<int> AllIds = InputValidtion();
         List<Product> result = new List<Product>();
 
-        for (int i = 0; i <  AllIds.Count; i++)
+        for (int i = 0; i < AllIds.Count; i++)
         {
             result.AddRange(proudects[AllIds[i]]);
 
         }
-
-
-
         return result;
     }
 
