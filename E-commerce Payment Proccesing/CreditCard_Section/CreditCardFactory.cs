@@ -1,65 +1,49 @@
-﻿public class CreditCardFactory : PaymentFactory
+﻿using E_commerce_Payment_Proccesing.UserinterAction;
+using E_commerce_Payment_Proccesing.Userinterface;
+
+public class CreditCardFactory : PaymentFactory
 {
+
+    private IDisplayMessage _displayMessage;
+    private IUserInputClass _userInputClass;
+
+    public CreditCardFactory(IDisplayMessage displayMessage, IUserInputClass userInputClass)
+    {
+        _displayMessage = displayMessage;
+        _userInputClass = userInputClass;
+    }
     public override PaymentProcessor CreatePaymentProcessor()
     {
-        Console.WriteLine("Enter Card Number:");
-        string cardNumber = Console.ReadLine()!;
+        _displayMessage.Display("Enter Card Number:");
+        string cardNumber = _userInputClass.UserInput();
 
-        Console.WriteLine("Enter CVV:");
-        string cvv = Console.ReadLine()!;
+        _displayMessage.Display("Enter CVV:");
+        string cvv = _userInputClass.UserInput();
 
-        Console.WriteLine("Enter Expiry Month (MM):");
-        string month = Console.ReadLine()!;
+        _displayMessage.Display("Enter Expiry Month (MM):");
+        string month = _userInputClass.UserInput();
 
-        Console.WriteLine("Enter Expiry Year (YY):");
-        string year = Console.ReadLine()!;
+        _displayMessage.Display("Enter Expiry Year (YY):");
+        string year = _userInputClass.UserInput();
 
-        Console.WriteLine("Enter Card Holder Name:");
-        string name = Console.ReadLine()!;
+        _displayMessage.Display("Enter Card Holder Name:");
+        string name = _userInputClass.UserInput();
 
         return new CreditCardPayment
         {
             CardNumber = cardNumber,
             Cvv = cvv,
             ExpiryDate = $"{month}/{year}",
-            CardHolderName = name
+            CardHolderName = name,
+
         };
     }
 }
 
 
- 
 
 
 
 
 
 
-//public record OrderInfo
-//{
-//    public string OrderId { get; init; } = string.Empty;
-//    public decimal TotalPrice { get; init; }
-//    public List<Product>? CartDetails { get; init; }
-//    public DateTime OrderDate { get; init; }
-
-//    public PaymentProcessor PaymentDetails { get; init; } = null!;
-//}
-//public class PlacementOrder
-//{
-//    public OrderInfo CreateOrder(List<Product> cartDetails, PaymentProcessor paymentDetails)
-//    {
-//        var order = new OrderInfo
-//        {
-//            OrderId = Guid.NewGuid().ToString(),
-//            TotalPrice = (decimal)cartDetails.Sum(p => p.price),
-//            CartDetails = cartDetails,
-//            OrderDate = DateTime.UtcNow,
-//            PaymentDetails = paymentDetails
-//        };
-//        // Here you would typically save the order to a database or send it to an external service.
-//        return order;
-//    }
-
-
-
-//}

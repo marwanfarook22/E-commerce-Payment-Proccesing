@@ -4,9 +4,7 @@
     public string Cvv { get; init; } = string.Empty;
     public string ExpiryDate { get; init; } = string.Empty; // Format: MM/YY
     public string CardHolderName { get; init; } = string.Empty;
-    public override paymnetMethod CardMethod => paymnetMethod.CrditCard;
-
-
+    public override paymnetMethod CardMethod { get => paymnetMethod.CrditCard; set => CardMethod = paymnetMethod.CrditCard; }
 
     public override void ValidatePayment()
     {
@@ -30,42 +28,10 @@
 
 
 
+
     }
 }
 
 
- 
 
 
-
-
-
-
-//public record OrderInfo
-//{
-//    public string OrderId { get; init; } = string.Empty;
-//    public decimal TotalPrice { get; init; }
-//    public List<Product>? CartDetails { get; init; }
-//    public DateTime OrderDate { get; init; }
-
-//    public PaymentProcessor PaymentDetails { get; init; } = null!;
-//}
-//public class PlacementOrder
-//{
-//    public OrderInfo CreateOrder(List<Product> cartDetails, PaymentProcessor paymentDetails)
-//    {
-//        var order = new OrderInfo
-//        {
-//            OrderId = Guid.NewGuid().ToString(),
-//            TotalPrice = (decimal)cartDetails.Sum(p => p.price),
-//            CartDetails = cartDetails,
-//            OrderDate = DateTime.UtcNow,
-//            PaymentDetails = paymentDetails
-//        };
-//        // Here you would typically save the order to a database or send it to an external service.
-//        return order;
-//    }
-
-
-
-//}

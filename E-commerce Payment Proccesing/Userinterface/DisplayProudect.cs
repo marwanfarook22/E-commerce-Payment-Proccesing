@@ -12,7 +12,7 @@ public abstract class ProudectsUserInterface
     public abstract void DisplayProudects(IReadOnlyList<Product> proudects);
 }
 
-public class AutomaticProudectsUserInterface : ProudectsUserInterface
+public class Automatic_TableProudects_UserInterface : ProudectsUserInterface
 {
     public override void DisplayProudects(IReadOnlyList<Product> proudects)
     {
@@ -28,7 +28,7 @@ public class AutomaticProudectsUserInterface : ProudectsUserInterface
     }
 }
 
-public class ManualProudectsUserInterface : ProudectsUserInterface
+public class Manual_TableProudects_UserInterface : ProudectsUserInterface
 {
     private readonly int TableWidth = 80;
 

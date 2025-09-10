@@ -2,8 +2,7 @@
 {
     public string WalletId { get; init; } = string.Empty;
     public string Pin { get; init; } = string.Empty;
-    public override paymnetMethod CardMethod => paymnetMethod.DigitalWallet;
-
+    public override paymnetMethod CardMethod { get => paymnetMethod.DigitalWallet; set => CardMethod = paymnetMethod.DigitalWallet; }
 
     public override void ValidatePayment()
     {
